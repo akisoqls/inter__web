@@ -1,7 +1,7 @@
 version: '3'
   
 services:
-  instant-web-server-nginx:
+  inter__web:
     image: nginx:1.24
     volumes:
       - ./html:/usr/share/html
