@@ -1,0 +1,100 @@
+@font-face {
+  font-family: "syuei";
+  src: url(../assets/fonts/syuei.woff2) format(woff2);
+}
+body{
+  background-color: #fdfffe;
+  padding: 0 12px;
+  *{
+    font-family: "syuei", sans-serif;
+  }
+}
+
+section.firstview{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100vh - 54px);
+  @supports (height: 100dvh){
+    height: calc(100dvh - 54px);
+  }
+}
+header{
+  height: 54px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  justify-content: space-between;
+  padding: 12px 0;
+  box-sizing: border-box;
+  h1{
+    height: 100%;
+    svg{
+      height: 100%;
+    }
+  }
+  label{
+    display: block;
+    &:hover{
+      color: #bde729;
+    }
+  }
+}
+
+input[type=checkbox]{
+  display: none;
+  &:checked{
+    &+section.menu{
+      display: block;
+    }
+  }
+}
+
+section.menu{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #bde729;
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  padding: 0 12px;
+  @supports (height: 100dvh){
+    height: 100dvh;
+  }
+  header{
+    label{
+      &:hover{
+        color: #fdfffe;
+      }
+    }
+  }
+  ul{
+    
+  }
+}
+
+main{
+  height: 300vh;
+  margin: 60px auto 0 auto;
+  section{
+    &.statement{
+      border: 1px solid #bde729;
+      border-radius: 10px;
+      padding: 10px 10px;
+      margin: 0 0 80px 0;
+      p{
+        font-size: 24px;
+        line-height: 40px;
+      }
+    }
+    &.access{
+      h1, h2{
+        font-size: 24px;
+        line-height: 40px;
+        font-weight: bold;
+      }
+    }
+  }
+}
