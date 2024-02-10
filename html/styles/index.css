@@ -10,14 +10,19 @@ body * {
   font-family: "syuei", sans-serif;
 }
 
-section.firstview {
+section#firstview {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: calc(100vh - 54px);
 }
+section#firstview div canvas {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
 @supports (height: 100dvh) {
-  section.firstview {
+  section#firstview {
     height: calc(100dvh - 54px);
   }
 }
@@ -34,6 +39,7 @@ header {
 }
 header h1 {
   height: 100%;
+  display: flex;
 }
 header h1 svg {
   height: 100%;

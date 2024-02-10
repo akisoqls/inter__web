@@ -10,11 +10,18 @@ body{
   }
 }
 
-section.firstview{
+section#firstview{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: calc(100vh - 54px);
+  div{
+    canvas{
+      position: fixed;
+      bottom: 0;
+      right: 0;
+    }
+  }
   @supports (height: 100dvh){
     height: calc(100dvh - 54px);
   }
@@ -30,6 +37,7 @@ header{
   box-sizing: border-box;
   h1{
     height: 100%;
+    display: flex;
     svg{
       height: 100%;
     }

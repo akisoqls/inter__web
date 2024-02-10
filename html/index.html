@@ -13,15 +13,22 @@
   <link rel="stylesheet" href="./styles/reset.css">
   <link rel="stylesheet" href="./styles/main.css">
   <link rel="stylesheet" href="./styles/index.css">
+  <script type="importmap">
+    {
+      "imports": {
+          "three": "https://unpkg.com/three@0.161.0/build/three.module.js"
+      }
+    }
+  </script>
   <script type="module" src="./scripts/main.js"></script>
   <script type="module" src="./scripts/index.js"></script>
+  <script type="module" src="./scripts/3dtest.js"></script>
   <meta name="theme-color" content="">
   <title>Inter_ web</title>
 </head>
 <body>
-  <section class="firstview">
+  <section id="firstview">
     <div>
-      
     </div>
     <p>
       多摩美術大学大学院情報デザイン研究領域 研究成果展 2024
@@ -50,6 +57,7 @@
           </g>
         </g>
       </svg>
+      <div id="icon"></div>
     </h1>
     <label for="menu">
       <p>
