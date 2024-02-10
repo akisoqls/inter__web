@@ -7,6 +7,7 @@
 ```shell
 $ git clone https://github.com/akisoqls/inter__web.git
 $ cd inter__web
+$ npm install
 $ npm run dev
 ```
 
