@@ -1,2 +1,6 @@
 .DS_Store
 *.css.map
+
+node_modules
+public
+package-lock.json
