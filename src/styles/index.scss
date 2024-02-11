@@ -42,6 +42,11 @@ header{
       height: 100%;
     }
   }
+  div{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
   label{
     display: block;
     &:hover{
