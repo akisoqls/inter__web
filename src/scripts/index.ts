@@ -1,28 +1,101 @@
 import * as THREE from "three";
-import { GLTFLoader, type GLTF } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
+const canvasWrapperInFV = document.querySelector("section#firstview > div")
+const canvasWrapperInHeader = document.querySelector("#icon")
 
-const canvas = {
-  height: 100,
-  width: 100
+const header = document.querySelector("header#global_header");
+const headerHeight = header !== null ? header.getBoundingClientRect().height : 54;
+
+let canvas = {
+  height: Math.min(window.innerHeight - headerHeight, 1200),
+  width: Math.min(window.innerWidth, 800)
 }
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(50, canvas.height / canvas.width, 0.1);
+const cameraForFV = new THREE.PerspectiveCamera(50, canvas.height / canvas.width, 0.1);
+const cameraForHeader = new THREE.PerspectiveCamera(50, 120/160, 0.1);
 
-camera.lookAt(new THREE.Vector3(0, 0, 0));
+cameraForFV.lookAt(new THREE.Vector3(0, 0, 0));
 
 let scrollX = 0.00
 let scrollY = 0.00
 let prevScrollPosition = 0;
 
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize( canvas.height, canvas.width );
-document.querySelector("#icon")?.appendChild(renderer.domElement);
+let currentObject: "firstView" | "header" = "firstView"
+
+const renderers = {
+  firstView: new THREE.WebGLRenderer(),
+  header: new THREE.WebGLRenderer()
+}
+
+renderers.firstView.setSize( canvas.height, canvas.width );
+renderers.header.setSize(120, 160);
+
+
+if (canvasWrapperInFV) {
+
+  canvasWrapperInFV.classList.add("active");
+  canvasWrapperInFV.appendChild(renderers.firstView.domElement);
+
+}
+
+if (canvasWrapperInHeader) {
+
+  canvasWrapperInHeader.appendChild(renderers.header.domElement);
+
+}
+
+
+window.addEventListener("resize", () => {
+  canvas = {
+    height: Math.min(window.innerHeight - headerHeight, 1200),
+    width: Math.min(window.innerWidth, 800)
+  }
+
+  renderers.firstView.setPixelRatio(canvas.height / canvas.width);
+
+  // cameraForFV.aspect = canvas.height / canvas.width
+  cameraForFV.updateProjectionMatrix();
+})
+
 window.addEventListener("scroll", () => {
+  
+  if (canvasWrapperInHeader && canvasWrapperInFV) {
+
+    if (canvasWrapperInHeader.getBoundingClientRect().y < window.innerHeight / 3) {
+
+      currentObject = "header"
+      canvasWrapperInHeader.classList.add("active")
+      canvasWrapperInFV.classList.remove("active")
+      
+    } else {
+      
+      currentObject = "firstView"
+      canvasWrapperInHeader.classList.remove("active")
+      canvasWrapperInFV.classList.add("active")
+
+    }
+
+  }
+
+  const globalHeader = document.querySelector("header#global_header")
+  if (globalHeader) {
+    if (window.scrollY + headerHeight > window.innerHeight) {
+
+      document.querySelector("header#global_header")?.classList.add("fix")
+
+    } else {
+
+      document.querySelector("header#global_header")?.classList.remove("fix")
+
+    }
+    
+  }
+
   if (prevScrollPosition < window.scrollY) {
-    scrollX += 0.2
+    scrollX += 0.1
 	} else {
-    scrollY += 0.2
+    scrollY += 0.1
 	}
   prevScrollPosition = window.scrollY;
   
@@ -41,30 +114,22 @@ const directionalLight = new THREE.DirectionalLight(0xffffff, 2)
 directionalLight.position.set(-5, 5, 3)
 scene.add(directionalLight)
 
-renderer.setClearColor(0x000000, 0);
+renderers.firstView.setClearColor(0x000000, 0);
+renderers.header.setClearColor(0x000000, 0);
 
-// loader.load( '../assets/globs/icon.glb', function ( gltf ) {
-
-// 	scene.add( gltf.scene );
-
-// }, undefined, function ( error ) {
-
-// 	console.error( error );
-
-// } );
-// scene.add( cube );
-
-camera.position.z = 5;
+cameraForFV.position.z = 5;
+cameraForHeader.position.z = 5;
 
 function animate() {
   requestAnimationFrame(animate);
   
-  scrollX -= 0.01;
+  scrollX -= 0.005;
   model.rotation.x = scrollX
-  scrollY -= 0.01;
+  scrollY -= 0.005;
   model.rotation.y = scrollY;
 
-  renderer.render(scene, camera);
+  renderers.firstView.render(scene, cameraForFV);
+  renderers.header.render(scene, cameraForHeader);
 }
 animate();
 
