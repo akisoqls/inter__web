@@ -23,8 +23,9 @@ module.exports = {
     })
   ],
   performance: {
-    maxEntrypointSize: 2048000, // 1MB、エントリポイントの最大サイズ
-    maxAssetSize: 2048000, // 1MB、生成される各アセットの最大サイズ
+    maxEntrypointSize: 4096000,
+    maxAssetSize: 4096000,
+    hints: false
   },
   module: {
     rules: [

@@ -7,6 +7,12 @@ const canvasWrapperInHeader = document.querySelector("#icon")
 const header = document.querySelector("header#global_header");
 const headerHeight = header !== null ? header.getBoundingClientRect().height : 54;
 
+const rotateDirection = {
+  x: Math.floor(Math.random() * 10 % 2) ? 1 : -1,
+  y: Math.floor(Math.random() * 10 % 2) ? 1 : -1,
+  z: Math.floor(Math.random() * 10 % 2) ? 1 : -1
+}
+
 let canvas = {
   height: Math.min(window.innerHeight - headerHeight, 1200),
   width: Math.min(window.innerWidth, 800)
@@ -19,6 +25,7 @@ cameraForFV.lookAt(new THREE.Vector3(0, 0, 0));
 
 let scrollX = 0.00
 let scrollY = 0.00
+let scrollZ = 0.00
 let prevScrollPosition = 0;
 
 let currentObject: "firstView" | "header" = "firstView"
@@ -92,25 +99,39 @@ window.addEventListener("scroll", () => {
     
   }
 
+})
+
+window.addEventListener("scroll", () => {
   if (prevScrollPosition < window.scrollY) {
-    scrollX += 0.1
+    scrollX += 0.07 * rotateDirection.x * -1
+    scrollY += 0.007 * rotateDirection.y * -1
 	} else {
-    scrollY += 0.1
+    scrollX -= 0.05 * rotateDirection.x * -1
+    scrollZ -= 0.009 * rotateDirection.z * -1
 	}
   prevScrollPosition = window.scrollY;
   
-})
+});
 
 const loader = new GLTFLoader();
-// GLTFファイルのパスを指定
-const glb = await loader.loadAsync('./assets/gltf/pcNetwork.glb');
+
+const glbPaths = [
+  './assets/gltf/pcNetwork.glb',
+  './assets/gltf/humans.glb',
+  './assets/gltf/trash.glb',
+  './assets/gltf/gear_and_window.glb',
+  './assets/gltf/fileSharing.glb',
+  './assets/gltf/human_and_file.glb',
+]
+const glb = await loader.loadAsync(glbPaths[
+  Math.floor(Math.random() * glbPaths.length) % glbPaths.length
+]);
 
 const model = glb.scene;
-console.log(model)
 scene.add(model);
 
 
-const directionalLight = new THREE.DirectionalLight(0xffffff, 2)
+const directionalLight = new THREE.DirectionalLight(0xffffff, 2.5)
 directionalLight.position.set(-5, 5, 3)
 scene.add(directionalLight)
 
@@ -123,10 +144,12 @@ cameraForHeader.position.z = 5;
 function animate() {
   requestAnimationFrame(animate);
   
-  scrollX -= 0.005;
-  model.rotation.x = scrollX
-  scrollY -= 0.005;
-  model.rotation.y = scrollY;
+  scrollX -= 0.0004 * rotateDirection.x;
+  model.rotation.x = scrollX * rotateDirection.x
+  scrollY -= 0.001  * rotateDirection.y;
+  model.rotation.y = scrollY * rotateDirection.y
+  scrollZ -= 0.0019  * rotateDirection.z;
+  model.rotation.z = scrollZ * rotateDirection.z
 
   renderers.firstView.render(scene, cameraForFV);
   renderers.header.render(scene, cameraForHeader);

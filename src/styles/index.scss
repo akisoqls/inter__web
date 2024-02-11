@@ -20,6 +20,7 @@ section#firstview{
     justify-content: center;
     align-items: center;
     height: 100%;
+    overflow: hidden;
     canvas{
       display: none !important;
     }
@@ -34,8 +35,8 @@ section#firstview{
     bottom: 0;
     padding: 4px 12px 0 12px;
   }
-  @supports (height: 100dvh){
-    height: calc(100dvh - 54px);
+  @supports (height: 100svh){
+    height: calc(100svh - 54px);
   }
 }
 header#global_header{
@@ -97,8 +98,8 @@ section.menu{
   width: 100vw;
   height: 100vh;
   padding: 0 12px;
-  @supports (height: 100dvh){
-    height: 100dvh;
+  @supports (height: 100lvh){
+    height: 100lvh;
   }
   header{
     label{
