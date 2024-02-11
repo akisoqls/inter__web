@@ -30,7 +30,7 @@ window.addEventListener("scroll", () => {
 
 const loader = new GLTFLoader();
 // GLTFファイルのパスを指定
-const glb = await loader.loadAsync('../assets/globs/pcNetwork.glb');
+const glb = await loader.loadAsync('./assets/gltf/pcNetwork.glb');
 
 const model = glb.scene;
 console.log(model)

@@ -1,6 +1,7 @@
 const glob = require("glob");
 const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -15,6 +16,11 @@ module.exports = {
       template: 'src/index.html',
       filename: 'index.html'
     }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'src/assets/gltf', to: 'assets/gltf' },
+      ]
+    })
   ],
   performance: {
     maxEntrypointSize: 2048000, // 1MB、エントリポイントの最大サイズ
