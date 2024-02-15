@@ -2,6 +2,14 @@
   font-family: "syuei";
   src: url(../assets/fonts/syuei.woff2) format(woff2);
 }
+
+html{
+  visibility: hidden;
+  &.font-loaded{
+    visibility: visible;
+  }
+}
+
 body{
   background-color: #fdfffe;
   *{
