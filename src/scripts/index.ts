@@ -88,8 +88,8 @@ window.addEventListener("resize", () => {
 
 });
 
-window.addEventListener("scroll", () => {
-  
+const switchObjectPos = () => {
+
   if (canvasWrapperInHeader && canvasWrapperInFV) {
 
     if (canvasWrapperInHeader.getBoundingClientRect().y < window.innerHeight / 3) {
@@ -124,6 +124,14 @@ window.addEventListener("scroll", () => {
     
   }
 
+}
+
+switchObjectPos()
+
+window.addEventListener("scroll", () => {
+
+  switchObjectPos()
+
 })
 
 window.addEventListener("scroll", () => {
@@ -139,6 +147,7 @@ window.addEventListener("scroll", () => {
     scrollZ -= 0.009 * rotateDirection.z * -1;
 	
   }
+
   prevScrollPosition = window.scrollY;
   
 });
