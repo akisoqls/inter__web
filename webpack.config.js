@@ -1,29 +1,25 @@
 const glob = require("glob");
 const path = require("path");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
-  mode: 'production',
+  mode: "production",
   entry: glob.sync("./src/**/*.ts").map(g => `./${g}`),
   output: {
-    path: path.resolve(__dirname, 'public'),
-    filename: 'index.js',
-    publicPath: '/',
+    path: path.resolve(__dirname, "public"),
+    filename: "index.js",
+    publicPath: "/",
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
-      filename: 'index.html'
+      template: "src/index.html",
+      filename: "index.html"
     }),
     new CopyWebpackPlugin({
       patterns: [
-        { from: 'src/assets', to: 'assets' },
+        { from: "src/assets/gltf", to: "assets/gltf" },
       ]
-    }),
-    new MiniCssExtractPlugin({
-      filename: 'styles/index.css',
     })
   ],
   performance: {
@@ -35,26 +31,26 @@ module.exports = {
     rules: [
       {
         test: /\.ts$/,
-        use: 'ts-loader',
+        use: "ts-loader",
       },
       {
         test: /\.scss$/,
         use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'sass-loader'
+          "style-loader",
+          "css-loader",
+          "sass-loader"
         ],
-      }
+      },
     ],
   },
   resolve: {
     extensions: [
-      '.ts', '.js',
+      ".ts", ".js",
     ],
   },
   devServer: {
     static: {
-      directory: path.resolve(__dirname, 'public'),
+      directory: path.resolve(__dirname, "public"),
       watch: true,
     },
     port: 8081,
