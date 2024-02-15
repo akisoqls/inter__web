@@ -2,6 +2,7 @@ const glob = require("glob");
 const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: 'production',
@@ -20,6 +21,9 @@ module.exports = {
       patterns: [
         { from: 'src/assets/gltf', to: 'assets/gltf' },
       ]
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'styles/index.css',
     })
   ],
   performance: {
@@ -36,11 +40,11 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           'css-loader',
           'sass-loader'
         ],
-      },
+      }
     ],
   },
   resolve: {
