@@ -19,7 +19,7 @@ module.exports = {
     }),
     new CopyWebpackPlugin({
       patterns: [
-        { from: 'src/assets/gltf', to: 'assets/gltf' },
+        { from: 'src/assets', to: 'assets' },
       ]
     }),
     new MiniCssExtractPlugin({
