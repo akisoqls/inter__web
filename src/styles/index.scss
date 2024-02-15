@@ -5,7 +5,12 @@
 
 html{
   visibility: hidden;
+  overflow-y: hidden;
   &.font-loaded{
+    visibility: visible;
+    overflow-y: scroll;
+  }
+  section#firstview canvas{
     visibility: visible;
   }
 }

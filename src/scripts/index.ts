@@ -24,9 +24,9 @@ const cameraForHeader = new THREE.PerspectiveCamera(50, 120/160, 0.1);
 
 cameraForFV.lookAt(new THREE.Vector3(0, 0, 0));
 
-let scrollX = 0.00;
-let scrollY = 0.00;
-let scrollZ = 0.00;
+let scrollX = Math.random();
+let scrollY = Math.random();
+let scrollZ = Math.random();
 let prevScrollPosition = 0;
 
 let currentObject: "firstView" | "header" = "firstView";
@@ -38,6 +38,9 @@ const renderers = {
 
 renderers.firstView.setSize( canvas.height, canvas.width );
 renderers.header.setSize(120, 160);
+
+renderers.firstView.shadowMap.enabled = true;
+renderers.header.shadowMap.enabled = true;
 
 if (canvasWrapperInFV) {
 
@@ -51,6 +54,25 @@ if (canvasWrapperInHeader) {
   canvasWrapperInHeader.appendChild(renderers.header.domElement);
 
 }
+
+const directionalLight = new THREE.DirectionalLight(0xffffff, 2.5);
+directionalLight.position.set(-5, 5, 3);
+scene.add(directionalLight);
+
+let model: THREE.Group<THREE.Object3DEventMap> | undefined = undefined;
+
+const geometry = new THREE.BoxGeometry(.4, .4, .4);
+const cube = new THREE.Mesh(geometry, new THREE.MeshStandardMaterial());
+cube.castShadow = true;
+cube.receiveShadow = true; 
+
+scene.add(cube);
+
+renderers.firstView.setClearColor(0x000000, 0);
+renderers.header.setClearColor(0x000000, 0);
+
+cameraForFV.position.z = 5;
+cameraForHeader.position.z = 5;
 
 window.addEventListener("resize", () => {
 
@@ -121,6 +143,61 @@ window.addEventListener("scroll", () => {
   
 });
 
+function loadingFlash() {
+
+  if (cube.visible) {
+
+    cube.visible = false;
+    setTimeout(loadingFlash, 500);
+  
+  } else {
+  
+    cube.visible = true;
+    setTimeout(loadingFlash, 100);
+  
+  }
+
+}
+
+loadingFlash();
+
+function animate() {
+
+  requestAnimationFrame(animate);
+  
+  if (model) {
+
+    scrollX -= 0.0004 * rotateDirection.x;
+    model.rotation.x = scrollX * rotateDirection.x;
+  
+    scrollY -= 0.001  * rotateDirection.y;
+    model.rotation.y = scrollY * rotateDirection.y;
+  
+    scrollZ -= 0.0019  * rotateDirection.z;
+    model.rotation.z = scrollZ * rotateDirection.z;
+
+  }
+
+  if (cube) {
+    
+    scrollX -= 0.0004 * rotateDirection.x;
+    cube.rotation.x = scrollX * rotateDirection.x;
+  
+    scrollY -= 0.001  * rotateDirection.y;
+    cube.rotation.y = scrollY * rotateDirection.y;
+  
+    scrollZ -= 0.0019  * rotateDirection.z;
+    cube.rotation.z = scrollZ * rotateDirection.z;
+
+  }
+
+  renderers.firstView.render(scene, cameraForFV);
+  renderers.header.render(scene, cameraForHeader);
+
+}
+
+animate();
+
 const loader = new GLTFLoader();
 
 const glbPaths = [
@@ -138,37 +215,19 @@ const glb = await loader.loadAsync(
   ]
 );
 
-const model = glb.scene;
-scene.add(model);
+model = glb.scene;
 
-const directionalLight = new THREE.DirectionalLight(0xffffff, 2.5);
-directionalLight.position.set(-5, 5, 3);
-scene.add(directionalLight);
+await document.fonts.ready;
 
-renderers.firstView.setClearColor(0x000000, 0);
-renderers.header.setClearColor(0x000000, 0);
+setTimeout(() => {
 
-cameraForFV.position.z = 5;
-cameraForHeader.position.z = 5;
+  if (model) {
 
-function animate() {
+    scene.remove(cube);
+    scene.add(model);
 
-  requestAnimationFrame(animate);
-  
-  scrollX -= 0.0004 * rotateDirection.x;
-  model.rotation.x = scrollX * rotateDirection.x;
-  
-  scrollY -= 0.001  * rotateDirection.y;
-  model.rotation.y = scrollY * rotateDirection.y;
-  
-  scrollZ -= 0.0019  * rotateDirection.z;
-  model.rotation.z = scrollZ * rotateDirection.z;
+  }
 
-  renderers.firstView.render(scene, cameraForFV);
-  renderers.header.render(scene, cameraForHeader);
-
-}
-
-animate();
+}, 600);
 
 export default null;
