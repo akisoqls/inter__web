@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npx webpack",
-    "dev": "npx webpack && npx webpack serve"
+    "dev": "vite",
+    "build": "tsc && vite build --emptyOutDir",
+    "preview": "vite preview"
   },
+  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -14,7 +16,7 @@
     "@types/copy-webpack-plugin": "^10.1.0",
     "copy-webpack-plugin": "^12.0.2",
     "css-loader": "^6.10.0",
-    "sass": "^1.70.0",
+    "sass": "^1.71.1",
     "sass-loader": "^14.1.0",
     "style-loader": "^3.3.4",
     "ts-loader": "^9.5.1",
@@ -24,11 +26,13 @@
   },
   "dependencies": {
     "@types/three": "^0.161.2",
+    "autoprefixer": "^10.4.17",
     "glob": "^10.3.10",
     "html-webpack-plugin": "^5.6.0",
     "mini-css-extract-plugin": "^2.8.0",
     "three": "^0.161.0",
     "vite": "^5.1.4",
+    "vite-plugin-static-copy": "^1.0.1",
     "webpack-dev-server": "^4.15.1"
   }
 }
