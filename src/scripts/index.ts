@@ -108,6 +108,8 @@ const switchObjectPos = () => {
 
   }
 
+  console.log(currentObject);
+
   const globalHeader = document.querySelector("header#global_header");
   
   if (globalHeader) {
@@ -218,25 +220,30 @@ const glbPaths = [
   "./assets/gltf/human_and_file.glb",
 ];
 
-const glb = await loader.loadAsync(
+loader.loadAsync(
   glbPaths[
     Math.floor(Math.random() * glbPaths.length) % glbPaths.length
   ]
-);
+).then(glb => {
 
-model = glb.scene;
+  model = glb.scene;
+  
+});
 
-await document.fonts.ready;
 
-setTimeout(() => {
-
-  if (model) {
-
-    scene.remove(cube);
-    scene.add(model);
-
-  }
-
-}, 600);
+document.fonts.ready.then(() => {
+  
+  setTimeout(() => {
+  
+    if (model) {
+  
+      scene.remove(cube);
+      scene.add(model);
+  
+    }
+  
+  }, 600);
+  
+});
 
 export default null;
