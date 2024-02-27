@@ -1,5 +1,5 @@
-import "../styles/index.scss";
 import "../styles/reset.scss";
+import "../styles/index.scss";
 
 document.fonts.ready.then(() => {
 
