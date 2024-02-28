@@ -15,6 +15,22 @@ html{
   }
 }
 
+body{
+  background-color: #fdfffe;
+  // background-color: #282828;
+  opacity: 1;
+  background-image: 
+    repeating-linear-gradient(45deg, #fafdf9 25%, transparent 25%, transparent 75%, #fafdf9 75%, #fafdf9),
+    repeating-linear-gradient(45deg, #fafdf9 25%, #ffffff 25%, #ffffff 75%, #fafdf9 75%, #fafdf9);
+  background-position: 0 0, 1vw 1vw;
+  background-size: 2vw 2vw;
+  background-attachment: fixed;
+  *{
+    font-family: "syuei", sans-serif;
+    color: #030101;
+  }
+}
+
 p{
   font-size: 20px;
   line-height: 32px;
@@ -24,10 +40,23 @@ a{
   color: #bde729;
 }
 
-body{
-  background-color: #fdfffe;
-  *{
-    font-family: "syuei", sans-serif;
+@media (prefers-color-scheme: dark){
+  body{
+    background-color: #282828;
+    opacity: 1;
+    background-image: 
+      repeating-linear-gradient(45deg, #2e2e2e 25%, transparent 25%, transparent 75%, #2e2e2e 75%, #2e2e2e),
+      repeating-linear-gradient(45deg, #2e2e2e 25%, #282828 25%, #282828 75%, #2e2e2e 75%, #2e2e2e);
+    background-position: 0 0, 1vw 1vw;
+    background-size: 2vw 2vw;
+    background-attachment: fixed;
+    *{
+      color: #ffffff;
+    }
+  }
+
+  a{
+    color: #bde729;
   }
 }
 
@@ -63,6 +92,7 @@ section#firstview{
     height: calc(100svh - 54px);
   }
 }
+
 header#global_header{
   height: 30px;
   display: flex;
@@ -70,24 +100,48 @@ header#global_header{
   position: sticky;
   top: 0;
   justify-content: space-between;
-  padding: 12px 24px 24px 24px;
+  padding: 12px 0 24px 24px;
   box-sizing: content-box;
   h1{
     height: 100%;
     display: flex;
+    align-items: flex-end;
+    gap: 20px;
     svg{
       height: 100%;
-    }
-    div#icon{
-      position: relative;
-      left: -10px;
-      canvas{
-        display: none !important;
+
+      path.green {
+        fill: #030101;
       }
-      &.active{
-        canvas{
-          display: block !important;
+      path.light_gray {
+        fill: #9d9ba9;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        path.green {
+          fill: #bde729;
         }
+        path.light_gray {
+          fill: #9d9ba9;
+        }
+      }
+
+    }
+    span{
+      font-size: 12px;
+      position: relative;
+      top: 1px;
+    }
+  }
+  div#icon{
+    position: relative;
+    left: -10px;
+    canvas{
+      display: none !important;
+    }
+    &.active{
+      canvas{
+        display: block !important;
       }
     }
   }

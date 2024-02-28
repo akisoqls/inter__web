@@ -7,6 +7,8 @@ const canvasWrapperInHeader = document.querySelector("#icon");
 const header = document.querySelector("header#global_header");
 const headerHeight = header !== null ? header.getBoundingClientRect().height : 54;
 
+const { matches: isDark } = matchMedia("(prefers-color-scheme: dark)")
+
 const rotateDirection = {
   x: Math.floor(Math.random() * 10 % 2) ? 1 : -1,
   y: Math.floor(Math.random() * 10 % 2) ? 1 : -1,
@@ -55,7 +57,7 @@ if (canvasWrapperInHeader) {
 
 }
 
-const directionalLight = new THREE.DirectionalLight(0xffffff, 2.5);
+const directionalLight = new THREE.DirectionalLight(isDark ? 0xcfcfcf : 0xfefff0, 2.5);
 directionalLight.position.set(-5, 5, 3);
 scene.add(directionalLight);
 
