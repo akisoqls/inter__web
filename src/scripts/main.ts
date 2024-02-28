@@ -1,6 +1,7 @@
 import "../styles/reset.scss";
 import "../styles/index.scss";
 import "./threeDvisual.ts"
+import "./index.ts"
 
 document.fonts.ready.then(() => {
 
