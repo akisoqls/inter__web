@@ -19,6 +19,10 @@ export default defineConfig({
         {
           src: "./assets/gltf/*",
           dest: "./assets/gltf"
+        },
+        {
+          src: "./assets/jsons/*",
+          dest: "./assets/jsons"
         }
       ]
     })
