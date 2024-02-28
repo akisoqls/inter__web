@@ -22,7 +22,7 @@ let canvas = {
 
 const scene = new THREE.Scene();
 const cameraForFV = new THREE.PerspectiveCamera(50, canvas.height / canvas.width, 0.1);
-const cameraForHeader = new THREE.PerspectiveCamera(50, 120/160, 0.1);
+const cameraForHeader = new THREE.PerspectiveCamera(35, 160/160, 0.1);
 
 cameraForFV.lookAt(new THREE.Vector3(0, 0, 0));
 
@@ -39,7 +39,7 @@ const renderers = {
 };
 
 renderers.firstView.setSize( canvas.height, canvas.width );
-renderers.header.setSize(120, 160);
+renderers.header.setSize(160, 160);
 
 renderers.firstView.shadowMap.enabled = true;
 renderers.header.shadowMap.enabled = true;
@@ -66,7 +66,8 @@ let model: THREE.Group<THREE.Object3DEventMap> | undefined = undefined;
 const geometry = new THREE.BoxGeometry(.4, .4, .4);
 const cube = new THREE.Mesh(geometry, new THREE.MeshStandardMaterial());
 cube.castShadow = true;
-cube.receiveShadow = true; 
+cube.receiveShadow = true;
+cube.name = "loadingCube";
 
 scene.add(cube);
 
@@ -154,7 +155,7 @@ window.addEventListener("scroll", () => {
   
 });
 
-function loadingFlash() {
+const loadingFlash = () => {
 
   if (cube.visible) {
 
@@ -172,7 +173,7 @@ function loadingFlash() {
 
 loadingFlash();
 
-function animate() {
+const animate = () => {
 
   requestAnimationFrame(animate);
   
@@ -224,17 +225,14 @@ loader.loadAsync(
   glbPaths[
     Math.floor(Math.random() * glbPaths.length) % glbPaths.length
   ]
-).then(glb => {
+).then(async glb => {
 
   model = glb.scene;
   
-});
+  await document.fonts.ready
 
-
-document.fonts.ready.then(() => {
-  
   setTimeout(() => {
-  
+    
     if (model) {
   
       scene.remove(cube);
@@ -244,6 +242,42 @@ document.fonts.ready.then(() => {
   
   }, 600);
   
+});
+
+document.querySelectorAll("#firstview, #icon").forEach(element => {
+  element.addEventListener("click", () => {
+
+    if (!scene.children.some(child => child.name === "loadingCube")) {
+
+      if (model) {
+
+        scene.remove(model);
+        scene.add(cube);
+      
+      }
+  
+      model = undefined
+  
+      loader.loadAsync(
+        glbPaths[
+          Math.floor(Math.random() * glbPaths.length) % glbPaths.length
+        ]
+      ).then(glb => {
+  
+        model = glb.scene;
+
+        model.rotation.x = model.rotation.x * 0.3
+        model.rotation.y = model.rotation.y * -0.4
+        model.rotation.z = model.rotation.z * 0.9
+        
+        scene.remove(cube);
+        scene.add(model);
+  
+      });
+
+    }
+
+  })
 });
 
 export default null;
