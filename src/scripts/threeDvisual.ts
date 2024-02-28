@@ -29,7 +29,7 @@ let scrollY = Math.random();
 let scrollZ = Math.random();
 let prevScrollPosition = 0;
 
-let currentObject: "firstView" | "header" = "firstView";
+// let currentObject: "firstView" | "header" = "firstView";
 
 const renderers = {
   firstView: new THREE.WebGLRenderer(),
@@ -94,13 +94,13 @@ const switchObjectPos = () => {
 
     if (canvasWrapperInHeader.getBoundingClientRect().y < window.innerHeight / 3) {
 
-      currentObject = "header";
+      // currentObject = "header";
       canvasWrapperInHeader.classList.add("active");
       canvasWrapperInFV.classList.remove("active");
       
     } else {
       
-      currentObject = "firstView";
+      // currentObject = "firstView";
       canvasWrapperInHeader.classList.remove("active");
       canvasWrapperInFV.classList.add("active");
 
