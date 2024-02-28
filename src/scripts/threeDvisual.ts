@@ -108,8 +108,6 @@ const switchObjectPos = () => {
 
   }
 
-  console.log(currentObject);
-
   const globalHeader = document.querySelector("header#global_header");
   
   if (globalHeader) {
