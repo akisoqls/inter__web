@@ -216,6 +216,7 @@ main{
   padding: 0 24px;
   margin: 85px auto 0 auto;
   position: relative;
+  max-width: 1440px;
 
   & > * + * {
     margin: 72px 0 0 0;
@@ -359,6 +360,51 @@ main{
     align-items: center;
     justify-content: space-around;
   }
+  @media screen and (max-width: 1080px) {
+    section.box#statement{
+      width: 578px;
+      left: 120px;
+      top: 0;
+    }
+    div.row{
+      flex-direction: column;
+      position: relative;
+      section.box:nth-child(1){
+        margin: 0 auto;
+        position: relative;
+        right: 120px;
+      }
+      section.box:nth-child(2){
+        margin: 0 auto;
+        position: relative;
+        top: -100px;
+        position: relative;
+        left: 298px;
+      }
+    }
+  }
+  @media screen and (max-width: 872px) {
+    section.box#statement{
+      margin: 0 0 0 auto;
+      width: 578px;
+      left: 0;
+      top: 0;
+    }
+    div.row{
+      flex-direction: column;
+      position: relative;
+      section.box:nth-child(1){
+        margin: 0 auto 0 0;
+        position: relative;
+        right: 0px;
+      }
+      section.box:nth-child(2){
+        margin: 0 0 0 auto;
+        position: relative;
+        left: 0px;
+      }
+    }
+  }
   @media (prefers-color-scheme: dark){
     section.box{
       width: 578px;
@@ -380,12 +426,14 @@ main{
       margin: 0 auto;
       display: grid;
       width: 100%;
+      max-width: 1440px;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 72px 56px;
       padding: 0 104px;
       @media (max-width: 1280px) {
         grid-template-columns: 1fr 1fr;
         padding: 0 50px;
+        max-width: 1020px;
       }
       & > li{
         width: 100%;
