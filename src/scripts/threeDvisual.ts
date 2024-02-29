@@ -269,9 +269,17 @@ document.querySelectorAll("#firstview, #icon").forEach(element => {
         model.rotation.x = model.rotation.x * 0.3
         model.rotation.y = model.rotation.y * -0.4
         model.rotation.z = model.rotation.z * 0.9
+        setTimeout(() => {
+    
+          if (model) {
         
-        scene.remove(cube);
-        scene.add(model);
+            scene.remove(cube);
+            scene.add(model);
+        
+          }
+        
+        }, 1200);
+        
   
       });
 
