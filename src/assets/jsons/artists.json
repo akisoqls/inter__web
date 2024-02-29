@@ -85,15 +85,20 @@
     "bio":"-"
   },
   {
-    "artistName": "徐 雨青",
+    "artistName": "chuieh",
     "links":[
       {
         "name": "Instagram",
         "link": "https://www.instagram.com/chuieh_zz",
         "label": "@chuieh_zz"
+      },
+      {
+        "name": "Website",
+        "link": "http://chuieh.com",
+        "label": "http://chuieh.com"
       }
     ],
-    "bio":"Play with words. #Ideographic poetry#"
+    "bio":"文字を編み織る。 ξ',',ζ"
   },
   {
     "artistName": "坂田 晶",
