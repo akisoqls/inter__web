@@ -222,7 +222,14 @@
     "bio":"-"
   },
   {
-    "artistName": "チョウハクゲン",
+    "artistName": "yakyak",
+    "links":[
+      {
+        "name": "Instagram",
+        "link": "https://www.instagram.com/b.ooooii",
+        "label": "@b.ooooii"
+      }
+    ],
     "bio":"-"
   }
 ]
