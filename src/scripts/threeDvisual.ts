@@ -38,8 +38,17 @@ const renderers = {
   header: new THREE.WebGLRenderer()
 };
 
-renderers.firstView.setSize( canvas.height, canvas.width );
-renderers.header.setSize(160, 160);
+renderers.firstView.setSize(canvas.height, canvas.width);
+
+if (window.innerWidth < 768) {
+
+  renderers.header.setSize(120, 120);
+  
+} else {
+
+  renderers.header.setSize(160, 160);
+  
+}
 
 renderers.firstView.shadowMap.enabled = true;
 renderers.header.shadowMap.enabled = true;

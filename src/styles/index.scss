@@ -100,7 +100,7 @@ section#firstview{
   @media screen and (max-width: 768px) {
     height: calc(100vh - 104px);
     @supports (height: 100svh){
-      height: calc(100svh - 104px);
+      height: calc(100svh - 72px);
     }
   }
 }
@@ -157,11 +157,14 @@ header#global_header{
     }
   }
   @media screen and (max-width: 768px) {
-    padding: 16px 0 4px 24px;
+    padding: 16px 0 4px 12px;
     h1{
-      flex-direction: column;
+      flex-direction: column-reverse;
       align-items: flex-start;
       gap: 12px;
+      svg{
+        height: 17.6px;
+      }
     }
     div#icon{
       position: absolute;
@@ -213,7 +216,7 @@ section.menu{
 }
 
 main{
-  padding: 0 24px;
+  padding: 0 12px;
   margin: 85px auto 0 auto;
   position: relative;
   max-width: 1440px;
@@ -430,6 +433,9 @@ main{
       &#information{
         width: 100%;
         margin: 0 0 0 0;
+        & > section{
+          padding: 20px;
+        }
         li{
           flex-direction: column;
         }
@@ -461,6 +467,9 @@ main{
         width: 100%;
         position: static;
         margin: 48px 0 0 0;
+        & > section{
+          padding: 20px;
+        }
       }
       & > div.row{
 
