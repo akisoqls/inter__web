@@ -21,7 +21,7 @@
     "bio":"ゲームを作ってます"
   },
   {
-    "artistName": "陳巻　CHEN JUAN",
+    "artistName": "CHEN JUAN",
     "links":[
       {
         "name": "Instagram",
@@ -32,9 +32,14 @@
         "name": "Threads",
         "link": "https://www.threads.net/@chenjuan1k",
         "label": "@chenjuan1k"
+      },
+      {
+        "name": "Website",
+        "link": "https://chenjuan1k.com/",
+        "label": "https://chenjuan1k.com/"
       }
     ],
-    "bio":"Chen Juan, a Chinese media artist now based in Tokyo, specializes in film and digital photography, video making, and stop-motion animation. Her exploration delves into the intricate relationships and connections between nature, humanity, and technology. The works typically illuminate the subtle interplay of these forces, inviting contemplation on their coexistence and impact in the contemporary world."
+    "bio":"A Chinese media artist who based in Tokyo now, specializing in film and digital photography, video making, and stop-motion animation, delves into the intricate relationships and connections between nature, humanity, and technology. The works usually illuminate the subtle interplay of these forces, inviting contemplation on their coexistence and impact on one another in the contemporary world."
   },
   {
     "artistName": "中村羽菜",
@@ -53,7 +58,7 @@
     "bio":"she/her\n1999年神奈川県横浜市出身"
   },
   {
-    "artistName": "コウケイ　Jiang Xi 江渓",
+    "artistName": "jiang xi",
     "links":[
       {
         "name": "Instagram",
@@ -61,7 +66,7 @@
         "label": "@pickled_mob_seaweed"
       }
     ],
-    "bio":"-"
+    "bio":"中國湖南省出身、アメリカのニューヨーク視覚芸術学院コンピュータアート専攻を卒業し、今多摩美術大学大学院研究科・情報デザインメディアコース修士課程で在籍している"
   },
   {
     "artistName": "Koyama Nene",
