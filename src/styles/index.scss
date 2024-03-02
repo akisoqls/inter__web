@@ -635,3 +635,27 @@ main{
     }
   }
 }
+
+footer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 190px 0 130px 0;
+  p{
+    text-align: center;
+    font-size: 11px;
+    line-height: 22px;
+    br{
+      display: none;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    padding: 40px 0 70px 0;
+    p{
+      br{
+        display: inline;
+      }
+    }
+  }
+}
