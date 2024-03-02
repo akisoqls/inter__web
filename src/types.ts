@@ -4,7 +4,8 @@ export type artistProfile = {
     name: string,
     link: string,
     label: string
-  }[]
+  }[],
+  profileImg?: string,
   bio: string
 }
 
@@ -24,11 +25,15 @@ export const isValidArtistProfile = (profileData: unknown): profileData is artis
       && profileData.links.every(link => isValidLink(link))
     )
     : true;
-  
-  const hasBio = ("bio" in profileData)
-    && (typeof profileData.bio === "string");
+    
+  const hasProfileImg = ("profileImg" in profileData)
+    ? (typeof profileData.profileImg === "string")
+    : true
+    
+    const hasBio = ("bio" in profileData)
+      && (typeof profileData.bio === "string");
 
-  return hasArtistName && hasLink && hasBio;
+  return hasArtistName && hasLink && hasProfileImg &&hasBio;
 
 }
 
@@ -44,5 +49,5 @@ const isValidLink = (linkObj: unknown): linkObj is artistProfile["links"] => {
   const hasLabel = "label" in linkObj && typeof linkObj.label === "string";
   
   return hasName && hasLink && hasLabel;
-  
+
 }
