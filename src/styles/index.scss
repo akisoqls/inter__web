@@ -222,6 +222,29 @@ main{
     margin: 72px 0 0 0;
   }
 
+  div.backgoround_graphic{
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    margin: 0;
+    &#background_line{
+      border: none;
+      background-color: #0000;
+      width: 1px;
+      height: 161px;
+    }
+    &#background_rectangle{
+      border: 1px solid;
+      border-color: #0000;
+      width: 100px;
+      height: 100px;
+    }
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
+  }
+
   section.box{
     position: relative;
     margin: 0 auto;
@@ -360,9 +383,13 @@ main{
     }
   }
   div.row{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+    position: relative;
+    margin: 100px 0 0 0;
+    & > div.main_element{
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
   }
   @media screen and (max-width: 1080px) {
     section.box#statement{
@@ -371,19 +398,20 @@ main{
       top: 0;
     }
     div.row{
-      flex-direction: column;
-      position: relative;
-      section.box:nth-child(1){
-        margin: 0 auto;
-        position: relative;
-        right: 120px;
-      }
-      section.box:nth-child(2){
-        margin: 0 auto;
-        position: relative;
-        top: -100px;
-        position: relative;
-        left: 298px;
+      & > div.main_element{
+        flex-direction: column;
+        section.box:nth-child(1){
+          margin: 0 auto;
+          position: relative;
+          right: 120px;
+        }
+        section.box:nth-child(2){
+          margin: 0 auto;
+          position: relative;
+          top: -100px;
+          position: relative;
+          left: 298px;
+        }
       }
     }
   }
@@ -395,17 +423,18 @@ main{
       top: 0;
     }
     div.row{
-      flex-direction: column;
-      position: relative;
-      section.box:nth-child(1){
-        margin: 0 auto 0 0;
-        position: relative;
-        right: 0px;
-      }
-      section.box:nth-child(2){
-        margin: 0 0 0 auto;
-        position: relative;
-        left: 0px;
+      & > div.main_element{
+        flex-direction: column;
+        section.box:nth-child(1){
+          margin: 0 auto 0 0;
+          position: relative;
+          right: 0px;
+        }
+        section.box:nth-child(2){
+          margin: 0 0 0 auto;
+          position: relative;
+          left: 0px;
+        }
       }
     }
   }

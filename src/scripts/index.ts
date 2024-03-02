@@ -36,3 +36,45 @@ import { isValidArtistProfile } from "../types.ts";
 
   }
 )();
+
+export const addBackground = (): void => {
+  const line = document.querySelector("#background_line") as HTMLDivElement;
+  const rectangle = document.querySelector("#background_rectangle") as HTMLDivElement;
+
+  const wrap = document.querySelector("div.row") as HTMLDivElement;
+  const statementBox = document.querySelector("section.box#statement") as HTMLElement;
+  const informationBox = document.querySelector("section.box#information") as HTMLElement;
+  const snsBox = document.querySelector("section.box#sns") as HTMLElement;
+
+  if (
+    !line ||
+    !rectangle ||
+    !statementBox ||
+    !informationBox ||
+    !snsBox
+  ) return;
+  
+  const wrapRectangle = wrap.getBoundingClientRect();
+  const statementBoxRectangle = statementBox.getBoundingClientRect();
+  const informationBoxRectangle = informationBox.getBoundingClientRect();
+  const snsBoxRectangle = snsBox.getBoundingClientRect();
+  
+  line.style.top = `${statementBoxRectangle.height}px`;
+  line.style.left = `${statementBoxRectangle.width / 2}px`;
+
+  const lineRectangle = line.getBoundingClientRect();
+  const marginBetweenWithWrapAndStatementBox = (wrapRectangle.top) - (statementBoxRectangle.top + statementBoxRectangle.height);
+
+  rectangle.style.width = `${(snsBoxRectangle.x + snsBoxRectangle.width / 2) - (informationBoxRectangle.x + informationBoxRectangle.width / 2)}px`;
+  rectangle.style.left = `${(informationBoxRectangle.x + informationBoxRectangle.width / 2) - wrapRectangle.left}px`;
+  rectangle.style.height = `${informationBoxRectangle.height}px`;
+  rectangle.style.top = `${lineRectangle.top - lineRectangle.top + lineRectangle.height - marginBetweenWithWrapAndStatementBox}px`;
+
+  line.style.backgroundColor = "#5F6368"
+  rectangle.style.borderColor = "#5F6368"
+  
+};
+
+window.addEventListener("resize", () => {
+  window.innerWidth > 768 && addBackground();
+});

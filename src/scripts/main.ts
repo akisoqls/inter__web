@@ -2,6 +2,7 @@ import "../styles/reset.scss";
 import "../styles/index.scss";
 import "./threeDvisual.ts"
 import "./index.ts"
+import { addBackground } from "./index.ts";
 
 document.fonts.ready.then(() => {
 
@@ -10,7 +11,9 @@ document.fonts.ready.then(() => {
   if (htmlDoc) {
   
     htmlDoc.classList.add("font-loaded");
-  
+
+    addBackground();
+    
   }
   
 });
