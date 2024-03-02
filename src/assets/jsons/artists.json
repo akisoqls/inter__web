@@ -1,25 +1,25 @@
 [
   {
-    "artistName": "mgr allergen0024",
+    "artistName": "148",
     "links":[
       {
         "name": "X",
-        "link": "https://twitter.com/allergen0024",
-        "label": "@allergen0024"
+        "link": "https://twitter.com/dodon_148",
+        "label": "@dodon_148"
       },
       {
         "name": "Instagram",
-        "link": "https://www.instagram.com/allergen0024_mgr",
-        "label": "@allergen0024_mgr"
+        "link": "https://www.instagram.com/mimimi_148",
+        "label": "@mimimi_148"
       },
       {
-        "name": "Website",
-        "link": "https://www.allergen0024.com",
-        "label": "https://www.allergen0024.com"
+        "name": "Bluesky",
+        "link": "https://bsky.app/profile/mimimi148.bsky.social",
+        "label": "@mimimi148.bsky.social"
       }
     ],
-    "profileImg": "mgr_allergen0024.png",
-    "bio":"ゲームを作ってます"
+    "profileImg": "148.jpeg",
+    "bio":"-"
   },
   {
     "artistName": "CHEN JUAN",
@@ -44,57 +44,6 @@
     "bio":"A Chinese media artist who based in Tokyo now, specializing in film and digital photography, video making, and stop-motion animation, delves into the intricate relationships and connections between nature, humanity, and technology. The works usually illuminate the subtle interplay of these forces, inviting contemplation on their coexistence and impact on one another in the contemporary world."
   },
   {
-    "artistName": "中村羽菜",
-    "links":[
-      {
-        "name": "X",
-        "link": "https://twitter.com/_chim_h",
-        "label": "@_chim_h"
-      },
-      {
-        "name": "Instagram",
-        "link": "https://www.instagram.com/hana_hands_",
-        "label": "@hana_hands_"
-      }
-    ],
-    "profileImg": "nakamurahana.jpeg",
-    "bio":"she/her\n1999年神奈川県横浜市出身"
-  },
-  {
-    "artistName": "jiang xi",
-    "links":[
-      {
-        "name": "Instagram",
-        "link": "https://www.instagram.com/pickled_mob_seaweed",
-        "label": "@pickled_mob_seaweed"
-      }
-    ],
-    "profileImg": "jiang_xi.jpeg",
-    "bio":"中國湖南省出身、アメリカのニューヨーク視覚芸術学院コンピュータアート専攻を卒業し、今多摩美術大学大学院研究科・情報デザインメディアコース修士課程で在籍している"
-  },
-  {
-    "artistName": "Koyama Nene",
-    "links":[
-      {
-        "name": "X",
-        "link": "https://twitter.com/terrestrialnene",
-        "label": "@terrestrialnene"
-      },
-      {
-        "name": "Instagram",
-        "link": "https://www.instagram.com/nenekoyama99",
-        "label": "@nenekoyama99"
-      },
-      {
-        "name": "Website",
-        "link": "https://www.idd.tamabi.ac.jp/ga23006/index.html",
-        "label": "https://www.idd.tamabi.ac.jp/ga23006/index.html"
-      }
-    ],
-    "profileImg": "Koyama_Nene.jpg",
-    "bio":"-"
-  },
-  {
     "artistName": "chuieh",
     "links":[
       {
@@ -112,26 +61,16 @@
     "bio":"文字を編み織る。 ξ',',ζ"
   },
   {
-    "artistName": "坂田 晶",
+    "artistName": "jiang xi",
     "links":[
       {
-        "name": "X",
-        "link": "https://twitter.com/akisoqls",
-        "label": "@akisoqls"
-      },
-      {
         "name": "Instagram",
-        "link": "https://www.instagram.com/akisoqls",
-        "label": "@akisoqls"
-      },
-      {
-        "name": "Website",
-        "link": "https://akisoqls.com",
-        "label": "https://akisoqls.com"
+        "link": "https://www.instagram.com/pickled_mob_seaweed",
+        "label": "@pickled_mob_seaweed"
       }
     ],
-    "profileImg": "aki_sakata.jpg",
-    "bio":"-"
+    "profileImg": "jiang_xi.jpeg",
+    "bio":"中國湖南省出身、アメリカのニューヨーク視覚芸術学院コンピュータアート専攻を卒業し、今多摩美術大学大学院研究科・情報デザインメディアコース修士課程で在籍している"
   },
   {
     "artistName": "小林優希",
@@ -156,69 +95,90 @@
     "bio":"滋賀県出身。第29回学生CGアワード 入選。\n様々な商品の空箱を使用し、独特の世界観を持つ写真作品を「ハコフォトプラ二ズム」シリーズとして制作している。"
   },
   {
-    "artistName": "Tetsuko",
-    "links":[
-      {
-        "name": "Instagram",
-        "link":"https://www.instagram.com/arisugawa_tetsuko",
-        "label": "@arisugawa_tetsuko"
-      }
-    ],
-    "bio":"多摩美術大学メ芸博士前期課程に在籍している。\n台湾で演劇を学び、北海道大学でフィールドワークと発掘プロジェクトに参加した。\n今は主に写真や映像を用いて芸術人類学に関する研究を行っている。"
-  },
-  {
-    "artistName": "すがさわ ゆづき",
+    "artistName": "Koyama Nene",
     "links":[
       {
         "name": "X",
-        "link": "https://twitter.com/s_yuzuk1",
-        "label": "@s_yuzuk1"
+        "link": "https://twitter.com/terrestrialnene",
+        "label": "@terrestrialnene"
       },
       {
         "name": "Instagram",
-        "link": "https://www.instagram.com/s_yuzuk1",
-        "label": "@s_yuzuk1"
+        "link": "https://www.instagram.com/nenekoyama99",
+        "label": "@nenekoyama99"
+      },
+      {
+        "name": "Website",
+        "link": "https://www.idd.tamabi.ac.jp/ga23006/index.html",
+        "label": "https://www.idd.tamabi.ac.jp/ga23006/index.html"
       }
     ],
-    "profileImg": "sugasawayuzuki.jpg",
+    "profileImg": "Koyama_Nene.jpg",
     "bio":"-"
   },
   {
-    "artistName": "吉岡雄大",
+    "artistName": "mgr allergen0024",
     "links":[
       {
         "name": "X",
-        "link": "https://twitter.com/OKAYU68151606",
-        "label": "@OKAYU68151606"
+        "link": "https://twitter.com/allergen0024",
+        "label": "@allergen0024"
       },
       {
         "name": "Instagram",
-        "link": "https://www.instagram.com/oisiiokayu24",
-        "label": "@oisiiokayu24"
+        "link": "https://www.instagram.com/allergen0024_mgr",
+        "label": "@allergen0024_mgr"
+      },
+      {
+        "name": "Website",
+        "link": "https://www.allergen0024.com",
+        "label": "https://www.allergen0024.com"
       }
     ],
-    "bio": "多摩美の大学院でキネティックアートやサウンド作品を制作している。\nメディアアートや、現代美術に興味を持ち多摩美メディア芸術コースに入学。"
+    "profileImg": "mgr_allergen0024.png",
+    "bio":"ゲームを作ってます"
   },
   {
-    "artistName": "148",
+    "artistName": "森優也",
+    "bio":"-"
+  },
+  {
+    "artistName": "中村羽菜",
     "links":[
       {
         "name": "X",
-        "link": "https://twitter.com/dodon_148",
-        "label": "@dodon_148"
+        "link": "https://twitter.com/_chim_h",
+        "label": "@_chim_h"
       },
       {
         "name": "Instagram",
-        "link": "https://www.instagram.com/mimimi_148",
-        "label": "@mimimi_148"
-      },
-      {
-        "name": "Bluesky",
-        "link": "https://bsky.app/profile/mimimi148.bsky.social",
-        "label": "@mimimi148.bsky.social"
+        "link": "https://www.instagram.com/hana_hands_",
+        "label": "@hana_hands_"
       }
     ],
-    "profileImg": "148.jpeg",
+    "profileImg": "nakamurahana.jpeg",
+    "bio":"she/her\n1999年神奈川県横浜市出身"
+  },
+  {
+    "artistName": "坂田 晶",
+    "links":[
+      {
+        "name": "X",
+        "link": "https://twitter.com/akisoqls",
+        "label": "@akisoqls"
+      },
+      {
+        "name": "Instagram",
+        "link": "https://www.instagram.com/akisoqls",
+        "label": "@akisoqls"
+      },
+      {
+        "name": "Website",
+        "link": "https://akisoqls.com",
+        "label": "https://akisoqls.com"
+      }
+    ],
+    "profileImg": "aki_sakata.jpg",
     "bio":"-"
   },
   {
@@ -239,8 +199,32 @@
     "bio":"ssmtat (Ze Hu) is a media artist currently living and studying in Japan. Graduated from School of Creative Media, City University of Hong Kong, he developed an interest in the making of experimental moving images and the creative application of multimedia technologies. With a theoretical emphasis on Agamben's discourses, he has been trying to reflect on the possible way of living. His work mainly focuses on the issue of collective ideology and private anxiety, and he is now researching on the metaphorical usage of Artificial Life and the distributed narrative strategy as well.\nssmtat （コ・タク）は現在日本在住のメディア・アーティストである。香港城市大学クリエイティブ・メディア学部を卒業後、実験映像制作とマルチメディア・テクノロジーの創造的応用に興味を持つ。彼はアガンベンの言説を理論的に重視し、可能な生き方について考察を試みている。彼は主に集団的イデオロギーと私的不安の問題に焦点を当て、現在は人工生命の隠喩的使用と分散的なナラティブについても研究している。"
   },
   {
-    "artistName": "森優也",
+    "artistName": "すがさわ ゆづき",
+    "links":[
+      {
+        "name": "X",
+        "link": "https://twitter.com/s_yuzuk1",
+        "label": "@s_yuzuk1"
+      },
+      {
+        "name": "Instagram",
+        "link": "https://www.instagram.com/s_yuzuk1",
+        "label": "@s_yuzuk1"
+      }
+    ],
+    "profileImg": "sugasawayuzuki.jpg",
     "bio":"-"
+  },
+  {
+    "artistName": "Tetsuko",
+    "links":[
+      {
+        "name": "Instagram",
+        "link":"https://www.instagram.com/arisugawa_tetsuko",
+        "label": "@arisugawa_tetsuko"
+      }
+    ],
+    "bio":"多摩美術大学メ芸博士前期課程に在籍している。\n台湾で演劇を学び、北海道大学でフィールドワークと発掘プロジェクトに参加した。\n今は主に写真や映像を用いて芸術人類学に関する研究を行っている。"
   },
   {
     "artistName": "yakyak",
@@ -252,5 +236,21 @@
       }
     ],
     "bio":"-"
+  },
+  {
+    "artistName": "吉岡雄大",
+    "links":[
+      {
+        "name": "X",
+        "link": "https://twitter.com/OKAYU68151606",
+        "label": "@OKAYU68151606"
+      },
+      {
+        "name": "Instagram",
+        "link": "https://www.instagram.com/oisiiokayu24",
+        "label": "@oisiiokayu24"
+      }
+    ],
+    "bio": "多摩美の大学院でキネティックアートやサウンド作品を制作している。\nメディアアートや、現代美術に興味を持ち多摩美メディア芸術コースに入学。"
   }
 ]
