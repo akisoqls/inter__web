@@ -538,10 +538,20 @@ main{
         div{
           &.profile_img{
             width: 100%;
-            aspect-ratio: 32/24;
-            background-color: #D9D9D9;
+            &:empty{
+              aspect-ratio: 1;
+              background-color: #D9D9D9;
+              @media (prefers-color-scheme: dark)  {
+                background-color: #838383;
+              }
+            }
+            img{
+              object-fit: contain;
+              width: 100%;
+            }
           }
           h4{
+            font-weight: bold;
             font-size: 14px;
             margin: 12px 0;
           }
@@ -579,7 +589,6 @@ main{
           & > div{
             &.profile_img{
               width: 100%;
-              aspect-ratio: 32/24;
             }
             & > h4{
               font-size: 14px;

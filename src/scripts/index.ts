@@ -8,12 +8,16 @@ import { isValidArtistProfile } from "../types.ts";
     const innerHtml = maybeArtistsObj.map<string>(artist => {
       if (!isValidArtistProfile(artist)) return "";
       return `<li>
-        <div class="profile_img"></div>
+        <div class="profile_img">${
+          artist.profileImg
+            ?`<img src="./assets/images/artists_portrait/${artist.profileImg}" >`
+            :""
+        }</div>
         <div>
           <h4>${artist.artistName}</h4>
-          <p>
-            ${artist.bio.replace(/\n/g, "<br />")}
-          </p>
+          <p>${
+            artist.bio.replace(/\n/g, "<br />")
+          }</p>
           ${artist.links ? `<ul>
             ${artist.links.map(link =>
           `<li>
