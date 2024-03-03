@@ -17,7 +17,6 @@ html{
 
 body{
   background-color: #fdfffe;
-  // background-color: #282828;
   opacity: 1;
   background-image: 
     repeating-linear-gradient(45deg, #fafdf9 25%, transparent 25%, transparent 75%, #fafdf9 75%, #fafdf9),
@@ -60,7 +59,6 @@ a{
       color: #ffffff;
     }
   }
-
   a{
     color: #bde729;
   }
@@ -125,7 +123,6 @@ header#global_header{
       path.light_gray {
         fill: #9d9ba9;
       }
-
       @media (prefers-color-scheme: dark) {
         path.green {
           fill: #bde729;
@@ -134,7 +131,6 @@ header#global_header{
           fill: #9d9ba9;
         }
       }
-
     }
     span{
       font-size: 12px;
@@ -217,11 +213,9 @@ main{
   margin: 85px auto 0 auto;
   position: relative;
   max-width: 1440px;
-
   & > * + * {
     margin: 72px 0 0 0;
   }
-
   div.backgoround_graphic{
     position: absolute;
     z-index: -1;
@@ -244,7 +238,6 @@ main{
       display: none;
     }
   }
-
   section.box{
     position: relative;
     margin: 0 auto;
@@ -280,7 +273,7 @@ main{
         margin: 0 auto;
       }
     }
-    & > section{
+    & > section.contents{
       padding: 20px;
       background-color: #fdfffe;
       border: 1px solid #5f6368;
@@ -296,7 +289,6 @@ main{
         font-weight: bold;
       }
     }
-
     &#statement{
       width: 578px;
       left: 135px;
@@ -315,8 +307,8 @@ main{
         margin: 45px 0 0 0;
       }
     }
-
-    &#information,&#sns{
+    &#information,
+    &#sns{
       ul{
         &>li{
           display: flex;
@@ -330,7 +322,6 @@ main{
         }
       }
     }
-
     &#information{
       width: 578px;
       top: 0;
@@ -369,7 +360,6 @@ main{
         }
       }
     }
-
     &#sns{
       width: 226px;
       section{
@@ -446,7 +436,7 @@ main{
       margin: 48px 0 0 0;
     }
     section.box{
-      & > section{
+      & > section.contents{
         padding: 20px;
       }
       &#statement{
@@ -465,9 +455,6 @@ main{
       &#information{
         width: 100%;
         margin: 0 0 0 0;
-        & > section{
-          padding: 20px;
-        }
         li{
           flex-direction: column;
         }
@@ -514,13 +501,12 @@ main{
           color: #5f6368;
         }
       }
-      &>section{
+      &>section.contents{
         background-color: #353535;
         border: 1px solid #353535;
       }
     }
   }
-
   section#events,
   section#artists{
     & > header{
@@ -547,7 +533,6 @@ main{
       }
     }
   }
-
   section#events{
     position: relative;
     display: flex;
@@ -608,15 +593,10 @@ main{
         li{
           flex-shrink: unset;
           flex-grow: unset;
-          section.box{
-            section{
-            }
-          }
         }
       }
     }
   }
-
   section#artists{
     & > header{
       margin: 10px 0 20px 0;

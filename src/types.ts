@@ -7,7 +7,7 @@ export type artistProfile = {
   }[],
   profileImg?: string,
   bio: string
-}
+};
 
 export const isValidArtistProfile = (profileData: unknown): profileData is artistProfile => {
   
@@ -28,7 +28,7 @@ export const isValidArtistProfile = (profileData: unknown): profileData is artis
     
   const hasProfileImg = ("profileImg" in profileData)
     ? (typeof profileData.profileImg === "string")
-    : true
+    : true;
     
     const hasBio = ("bio" in profileData)
       && (typeof profileData.bio === "string");

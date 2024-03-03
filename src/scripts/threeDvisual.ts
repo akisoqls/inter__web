@@ -7,7 +7,7 @@ const canvasWrapperInHeader = document.querySelector("#icon");
 const header = document.querySelector("header#global_header");
 const headerHeight = header !== null ? header.getBoundingClientRect().height : 54;
 
-const { matches: isDark } = matchMedia("(prefers-color-scheme: dark)")
+const { matches: isDark } = matchMedia("(prefers-color-scheme: dark)");
 
 const rotateDirection = {
   x: Math.floor(Math.random() * 10 % 2) ? 1 : -1,
@@ -35,7 +35,7 @@ let prevScrollPosition = 0;
 
 const renderers = {
   firstView: new THREE.WebGLRenderer(),
-  header: new THREE.WebGLRenderer()
+  header: new THREE.WebGLRenderer(),
 };
 
 renderers.firstView.setSize(canvas.height, canvas.width);
@@ -136,13 +136,13 @@ const switchObjectPos = () => {
     
   }
 
-}
+};
 
-switchObjectPos()
+switchObjectPos();
 
 window.addEventListener("scroll", () => {
 
-  switchObjectPos()
+  switchObjectPos();
 
 })
 
@@ -178,7 +178,7 @@ const loadingFlash = () => {
   
   }
 
-}
+};
 
 loadingFlash();
 
@@ -191,10 +191,10 @@ const animate = () => {
     scrollX -= 0.0004 * rotateDirection.x;
     model.rotation.x = scrollX * rotateDirection.x;
   
-    scrollY -= 0.001  * rotateDirection.y;
+    scrollY -= 0.001 * rotateDirection.y;
     model.rotation.y = scrollY * rotateDirection.y;
   
-    scrollZ -= 0.0019  * rotateDirection.z;
+    scrollZ -= 0.0019 * rotateDirection.z;
     model.rotation.z = scrollZ * rotateDirection.z;
 
   }
@@ -204,10 +204,10 @@ const animate = () => {
     scrollX -= 0.0004 * rotateDirection.x;
     cube.rotation.x = scrollX * rotateDirection.x;
   
-    scrollY -= 0.001  * rotateDirection.y;
+    scrollY -= 0.001 * rotateDirection.y;
     cube.rotation.y = scrollY * rotateDirection.y;
   
-    scrollZ -= 0.0019  * rotateDirection.z;
+    scrollZ -= 0.0019 * rotateDirection.z;
     cube.rotation.z = scrollZ * rotateDirection.z;
 
   }
@@ -215,7 +215,7 @@ const animate = () => {
   renderers.firstView.render(scene, cameraForFV);
   renderers.header.render(scene, cameraForHeader);
 
-}
+};
 
 animate();
 
@@ -238,7 +238,7 @@ loader.loadAsync(
 
   model = glb.scene;
   
-  await document.fonts.ready
+  await document.fonts.ready;
 
   setTimeout(() => {
     
@@ -265,19 +265,19 @@ document.querySelectorAll("#firstview, #icon").forEach(element => {
       
       }
   
-      model = undefined
+      model = undefined;
   
       loader.loadAsync(
         glbPaths[
-          Math.floor(Math.random() * glbPaths.length) % glbPaths.length
+        Math.floor(Math.random() * glbPaths.length) % glbPaths.length
         ]
       ).then(glb => {
   
         model = glb.scene;
 
-        model.rotation.x = model.rotation.x * 0.3
-        model.rotation.y = model.rotation.y * -0.4
-        model.rotation.z = model.rotation.z * 0.9
+        model.rotation.x = model.rotation.x * 0.3;
+        model.rotation.y = model.rotation.y * -0.4;
+        model.rotation.z = model.rotation.z * 0.9;
         setTimeout(() => {
     
           if (model) {
@@ -294,7 +294,7 @@ document.querySelectorAll("#firstview, #icon").forEach(element => {
 
     }
 
-  })
+  });
 });
 
 export default null;

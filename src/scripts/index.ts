@@ -2,6 +2,7 @@ import { isValidArtistProfile } from "../types.ts";
 
 (
   async () => {
+
     const jsonRes = await window.fetch("../assets/jsons/artists.json");
     const maybeArtistsObj: unknown[] = await jsonRes.json();
     
@@ -31,8 +32,8 @@ import { isValidArtistProfile } from "../types.ts";
       </li>`;
     }).join("");
 
-    const artistList = document.querySelector("section#artists > ul") as HTMLUListElement
-    if (artistList) artistList.innerHTML = innerHtml
+    const artistList = document.querySelector("section#artists > ul") as HTMLUListElement;
+    if (artistList) artistList.innerHTML = innerHtml;
 
   }
 )();
@@ -72,10 +73,10 @@ export const addBackground = (): void => {
   const marginBetweenWithStatementBoxAndWrap = wrapRectangle.top - statementBoxRectangle.bottom;
   const marginBetweenWithWrapAndEvents = eventsRectangle.top - wrapRectangle.bottom;
 
-  const rectangleTopPos = lineRectangle.height - marginBetweenWithStatementBoxAndWrap
-  const informationBoxCenterPosFromLeft = informationBoxRectangle.x + informationBoxRectangle.width / 2
-  const snsBoxCenterPosFromLeft = snsBoxRectangle.x + snsBoxRectangle.width / 2
-  const wrapRectanglePosFromLeft = wrapRectangle.left
+  const rectangleTopPos = lineRectangle.height - marginBetweenWithStatementBoxAndWrap;
+  const informationBoxCenterPosFromLeft = informationBoxRectangle.x + informationBoxRectangle.width / 2;
+  const snsBoxCenterPosFromLeft = snsBoxRectangle.x + snsBoxRectangle.width / 2;
+  const wrapRectanglePosFromLeft = wrapRectangle.left;
 
   rectangle.style.top = `${rectangleTopPos}px`;
   rectangle.style.left = `${informationBoxCenterPosFromLeft - wrapRectanglePosFromLeft}px`;
@@ -95,7 +96,7 @@ export const layoutEventsList = (): void => {
   if (
     !eventsList ||
     !eventsSeciont
-  ) return
+  ) return;
 
   eventsSeciont.style.left = `0px`;
   eventsList.style.left = `0px`;
