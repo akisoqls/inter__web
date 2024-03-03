@@ -100,7 +100,6 @@ export const layoutEventsList = (): void => {
   eventsSeciont.style.left = `0px`;
   eventsList.style.left = `0px`;
 
-  console.log(eventsSeciont.getBoundingClientRect().left)
   eventsSeciont.style.left = `${eventsSeciont.getBoundingClientRect().left * -1}px`;
   eventsList.style.left = `${eventsList.getBoundingClientRect().left * -1}px`;
 
