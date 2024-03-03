@@ -71,7 +71,6 @@ export const addBackground = (): void => {
 
   const lineRectangle = line.getBoundingClientRect();
   const marginBetweenWithStatementBoxAndWrap = wrapRectangle.top - statementBoxRectangle.bottom;
-  const marginBetweenWithWrapAndEvents = eventsRectangle.top - wrapRectangle.bottom;
 
   const rectangleTopPos = lineRectangle.height - marginBetweenWithStatementBoxAndWrap;
   const informationBoxCenterPosFromLeft = informationBoxRectangle.x + informationBoxRectangle.width / 2;
@@ -81,12 +80,38 @@ export const addBackground = (): void => {
   rectangle.style.top = `${rectangleTopPos}px`;
   rectangle.style.left = `${informationBoxCenterPosFromLeft - wrapRectanglePosFromLeft}px`;
   rectangle.style.width = `${snsBoxCenterPosFromLeft - informationBoxCenterPosFromLeft}px`;
-  rectangle.style.height = `${informationBoxRectangle.height + eventsRectangle.height  / 2 - rectangleTopPos + marginBetweenWithWrapAndEvents + 9}px`;
+  
+  const rectangleRectangle = rectangle.getBoundingClientRect();
+  rectangle.style.height = `${eventsRectangle.bottom - rectangleRectangle.top - eventsRectangle.height / 2 +9}px`;
 
   line.style.backgroundColor = isDark ? "#BDE729" : "#5F6368";
   rectangle.style.borderColor = isDark ? "#BDE729" : "#5F6368";
   
 };
+
+let eventLiElementsWidth: null | number = null
+let eventLiElementsPaddingLeft: null | number = null
+
+const getEventListInnerElementsTotalWidth = (eventsList: HTMLUListElement): number => {
+
+  const firstLi = eventsList.querySelector("li:first-child")
+  const lastLi = eventsList.querySelector("li:last-child")
+
+  if (!firstLi || !lastLi) return 0
+  
+  return lastLi.getBoundingClientRect().right - firstLi.getBoundingClientRect().left
+
+}
+
+const getLiPaddingLeft = (eventsList: HTMLUListElement): number => {
+
+  const firstLi = eventsList.querySelector("li:first-child")
+
+  if (!firstLi) return 0
+  
+  return firstLi.getBoundingClientRect().left - eventsList.getBoundingClientRect().left
+
+}
 
 export const layoutEventsList = (): void => {
 
@@ -101,12 +126,23 @@ export const layoutEventsList = (): void => {
   eventsSeciont.style.left = `0px`;
   eventsList.style.left = `0px`;
 
-  eventsSeciont.style.left = `${eventsSeciont.getBoundingClientRect().left * -1}px`;
-  eventsList.style.left = `${eventsList.getBoundingClientRect().left * -1}px`;
+  eventLiElementsWidth = eventLiElementsWidth || getEventListInnerElementsTotalWidth(eventsList);
+  
+  eventLiElementsPaddingLeft = eventLiElementsPaddingLeft || getLiPaddingLeft(eventsList)
+
+  if (window.innerWidth > eventLiElementsWidth + eventLiElementsPaddingLeft) {
+    
+    eventsSeciont.classList.remove("is_overflow");
+    eventsSeciont.classList.add("is_full_viewed");
+    eventsSeciont.style.left = `${(eventsSeciont.getBoundingClientRect().left * -1) + (window.innerWidth - eventsList.getBoundingClientRect().width) / 2}px`;
+    
+  } else {
+
+    eventsSeciont.classList.remove("is_full_viewed");
+    eventsSeciont.classList.add("is_overflow");
+    eventsSeciont.style.left = `${eventsSeciont.getBoundingClientRect().left * -1}px`;
+    eventsList.style.left = `${eventsList.getBoundingClientRect().left * -1}px`;
+
+  }
 
 };
-
-window.addEventListener("resize", () => {
-  layoutEventsList();
-  window.innerWidth > 768 && addBackground();
-});

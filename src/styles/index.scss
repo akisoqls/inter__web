@@ -6,7 +6,7 @@
 html{
   visibility: hidden;
   overflow-y: hidden;
-  &.font-loaded{
+  &.font-loaded.graphic-loaded{
     visibility: visible;
     overflow-y: scroll;
   }
@@ -543,7 +543,10 @@ main{
     position: relative;
     display: flex;
     align-items: center;
-    width: 100vw;
+    width: auto;
+    @media screen and (max-width: 1080px){
+      margin-top: 0;
+    }
     & > header{
       position: relative;
       width: 200px;
@@ -552,7 +555,7 @@ main{
     }
     ul#events_list{
       z-index: 10;
-      padding: 0px 30px 2px 240px;
+      padding: 0px 30px 2px 212px;
       position: absolute;
       display: flex;
       width: 100vw;
@@ -562,7 +565,6 @@ main{
       gap: 36px;
       li{
         flex-shrink: 0;
-        flex-grow: 1;
         section.box{
           width: 70vw;
           max-width: 300px;
@@ -582,6 +584,19 @@ main{
             }
           }
         }
+      }
+    }
+    &.is_full_viewed {
+      margin: 72px auto 0 auto;
+      width: auto;
+      ul#events_list{
+        width: auto;
+      }
+    }
+    &.is_overflow {
+      width: 100vw;
+      ul#events_list{
+        width: 100vw;
       }
     }
     @media screen and (max-width:768px) {
