@@ -25,6 +25,10 @@ export default defineConfig({
           dest: "./assets/jsons"
         },
         {
+          src: "./assets/images/ogimage.png",
+          dest: "./assets/images/"
+        },
+        {
           src: "./assets/images/artists_portrait/*",
           dest: "./assets/images/artists_portrait"
         }
