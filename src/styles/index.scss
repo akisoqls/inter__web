@@ -529,6 +529,7 @@ main{
       justify-content: center;
       align-items: center;
       flex-direction: column;
+      margin: 10px 0 20px 0;
       gap: 20px;
       & > img{
         display: block;
@@ -575,6 +576,19 @@ main{
           width: 70vw;
           max-width: 300px;
           section{
+            min-height: 300px;
+            position: relative;
+            p.comingsoon{
+              position: absolute;
+              top: 0;
+              right: 0;
+              bottom: 22px;
+              left: 0;
+              height: 24px;
+              margin: auto;
+              text-align: center;
+              font-style: italic;
+            }
           }
         }
       }

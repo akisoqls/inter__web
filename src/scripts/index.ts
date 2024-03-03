@@ -80,7 +80,7 @@ export const addBackground = (): void => {
   rectangle.style.top = `${rectangleTopPos}px`;
   rectangle.style.left = `${informationBoxCenterPosFromLeft - wrapRectanglePosFromLeft}px`;
   rectangle.style.width = `${snsBoxCenterPosFromLeft - informationBoxCenterPosFromLeft}px`;
-  rectangle.style.height = `${informationBoxRectangle.height + eventsRectangle.height  / 2 - rectangleTopPos + marginBetweenWithWrapAndEvents}px`;
+  rectangle.style.height = `${informationBoxRectangle.height + eventsRectangle.height  / 2 - rectangleTopPos + marginBetweenWithWrapAndEvents + 9}px`;
 
   line.style.backgroundColor = isDark ? "#BDE729" : "#5F6368";
   rectangle.style.borderColor = isDark ? "#BDE729" : "#5F6368";
