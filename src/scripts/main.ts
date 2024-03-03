@@ -2,7 +2,7 @@ import "../styles/reset.scss";
 import "../styles/index.scss";
 import "./threeDvisual.ts"
 import "./index.ts"
-import { addBackground } from "./index.ts";
+import { addBackground, layoutEventsList } from "./index.ts";
 
 document.fonts.ready.then(() => {
 
@@ -12,8 +12,9 @@ document.fonts.ready.then(() => {
   
     htmlDoc.classList.add("font-loaded");
 
+    layoutEventsList();
     addBackground();
-    
+
   }
   
 });

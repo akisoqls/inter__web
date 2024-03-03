@@ -38,6 +38,9 @@ import { isValidArtistProfile } from "../types.ts";
 )();
 
 export const addBackground = (): void => {
+
+  const { matches: isDark } = matchMedia("(prefers-color-scheme: dark)")
+
   const line = document.querySelector("#background_line") as HTMLDivElement;
   const rectangle = document.querySelector("#background_rectangle") as HTMLDivElement;
 
@@ -45,36 +48,65 @@ export const addBackground = (): void => {
   const statementBox = document.querySelector("section.box#statement") as HTMLElement;
   const informationBox = document.querySelector("section.box#information") as HTMLElement;
   const snsBox = document.querySelector("section.box#sns") as HTMLElement;
+  const events = document.querySelector("section#events") as HTMLUListElement;
 
   if (
     !line ||
     !rectangle ||
     !statementBox ||
     !informationBox ||
-    !snsBox
+    !snsBox ||
+    !events
   ) return;
   
   const wrapRectangle = wrap.getBoundingClientRect();
   const statementBoxRectangle = statementBox.getBoundingClientRect();
   const informationBoxRectangle = informationBox.getBoundingClientRect();
   const snsBoxRectangle = snsBox.getBoundingClientRect();
+  const eventsRectangle = events.getBoundingClientRect();
   
   line.style.top = `${statementBoxRectangle.height}px`;
   line.style.left = `${statementBoxRectangle.width / 2}px`;
 
   const lineRectangle = line.getBoundingClientRect();
-  const marginBetweenWithWrapAndStatementBox = (wrapRectangle.top) - (statementBoxRectangle.top + statementBoxRectangle.height);
+  const marginBetweenWithStatementBoxAndWrap = wrapRectangle.top - statementBoxRectangle.bottom;
+  const marginBetweenWithWrapAndEvents = eventsRectangle.top - wrapRectangle.bottom;
 
-  rectangle.style.width = `${(snsBoxRectangle.x + snsBoxRectangle.width / 2) - (informationBoxRectangle.x + informationBoxRectangle.width / 2)}px`;
-  rectangle.style.left = `${(informationBoxRectangle.x + informationBoxRectangle.width / 2) - wrapRectangle.left}px`;
-  rectangle.style.height = `${informationBoxRectangle.height}px`;
-  rectangle.style.top = `${lineRectangle.top - lineRectangle.top + lineRectangle.height - marginBetweenWithWrapAndStatementBox}px`;
+  const rectangleTopPos = lineRectangle.height - marginBetweenWithStatementBoxAndWrap
+  const informationBoxCenterPosFromLeft = informationBoxRectangle.x + informationBoxRectangle.width / 2
+  const snsBoxCenterPosFromLeft = snsBoxRectangle.x + snsBoxRectangle.width / 2
+  const wrapRectanglePosFromLeft = wrapRectangle.left
 
-  line.style.backgroundColor = "#5F6368"
-  rectangle.style.borderColor = "#5F6368"
+  rectangle.style.top = `${rectangleTopPos}px`;
+  rectangle.style.left = `${informationBoxCenterPosFromLeft - wrapRectanglePosFromLeft}px`;
+  rectangle.style.width = `${snsBoxCenterPosFromLeft - informationBoxCenterPosFromLeft}px`;
+  rectangle.style.height = `${informationBoxRectangle.height + eventsRectangle.height  / 2 - rectangleTopPos + marginBetweenWithWrapAndEvents}px`;
+
+  line.style.backgroundColor = isDark ? "#BDE729" : "#5F6368";
+  rectangle.style.borderColor = isDark ? "#BDE729" : "#5F6368";
   
 };
 
+export const layoutEventsList = (): void => {
+
+  const eventsList = document.querySelector("#events_list") as HTMLUListElement;
+  const eventsSeciont = document.querySelector("section#events") as HTMLElement;
+  
+  if (
+    !eventsList ||
+    !eventsSeciont
+  ) return
+
+  eventsSeciont.style.left = `0px`;
+  eventsList.style.left = `0px`;
+
+  console.log(eventsSeciont.getBoundingClientRect().left)
+  eventsSeciont.style.left = `${eventsSeciont.getBoundingClientRect().left * -1}px`;
+  eventsList.style.left = `${eventsList.getBoundingClientRect().left * -1}px`;
+
+};
+
 window.addEventListener("resize", () => {
+  layoutEventsList();
   window.innerWidth > 768 && addBackground();
 });
