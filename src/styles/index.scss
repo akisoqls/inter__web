@@ -361,15 +361,21 @@ main{
       }
     }
     &#sns{
-      width: 226px;
+      width: 316px;
       section{
         padding: 22px;
       }
       ul{
         &>li{
           margin: 0;
-          h3{
-            width: 40px;
+          p{
+            span{
+              font-weight: bold; 
+              word-break: break-all;
+              a{
+                font-weight: normal;
+              }
+            }
           }
         }
       }
