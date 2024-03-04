@@ -444,19 +444,22 @@ main{
     }
     section.box{
       & > section.contents{
-        padding: 20px;
+        padding: 36px 24px;
       }
       &#statement{
         width: 100%;
         margin: 0 0 0 auto;
         left: 0;
         top: 0;
-        p{
-          font-size: 15px;
-          line-height: 30px;
-          margin: 0 0 0 0;
-          &:first-child{
-            margin: 0 0 30px 0;
+        & > section.contents{
+          padding: 36px 24px;
+          p{
+            font-size: 15px;
+            line-height: 30px;
+            margin: 0 0 0 0;
+            &:first-child{
+              margin: 0 0 30px 0;
+            }
           }
         }
       }
@@ -494,8 +497,8 @@ main{
         width: 100%;
         position: static;
         margin: 80px 0 0 0;
-        & > section{
-          padding: 20px;
+        & > section.contents{
+          padding: 24px;
         }
       }
     }
