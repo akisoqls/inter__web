@@ -140,7 +140,15 @@
   },
   {
     "artistName": "森優也",
-    "bio":"-"
+    "links":[
+      {
+        "name": "Instagram",
+        "link":"@emergency.exit.sign",
+        "label": "https://www.instagram.com/emergency.exit.sign"
+      }
+    ],
+    "bio":"被VR体験/非VR体験",
+    "profileImg":"moriyuya.jpeg"
   },
   {
     "artistName": "中村羽菜",
