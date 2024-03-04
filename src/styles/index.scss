@@ -318,6 +318,7 @@ main{
           }
           p{
             flex-shrink: 1;
+            word-break: break-all;
           }
         }
       }
@@ -326,7 +327,7 @@ main{
       width: 578px;
       top: 0;
       & > section{
-        padding: 36px;
+        padding: 36px 24px;
       }
       ul{
         &>li{
@@ -361,7 +362,7 @@ main{
       }
     }
     &#sns{
-      width: 316px;
+      width: 334px;
       section{
         padding: 22px;
       }
