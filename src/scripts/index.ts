@@ -1,159 +1,148 @@
-import * as THREE from "three";
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { isValidArtistProfile } from "../types.ts";
 
-const canvasWrapperInFV = document.querySelector("section#firstview > div")
-const canvasWrapperInHeader = document.querySelector("#icon")
+(
+  async () => {
 
-const header = document.querySelector("header#global_header");
-const headerHeight = header !== null ? header.getBoundingClientRect().height : 54;
-
-const rotateDirection = {
-  x: Math.floor(Math.random() * 10 % 2) ? 1 : -1,
-  y: Math.floor(Math.random() * 10 % 2) ? 1 : -1,
-  z: Math.floor(Math.random() * 10 % 2) ? 1 : -1
-}
-
-let canvas = {
-  height: Math.min(window.innerHeight - headerHeight, 1200),
-  width: Math.min(window.innerWidth, 800)
-}
-const scene = new THREE.Scene();
-const cameraForFV = new THREE.PerspectiveCamera(50, canvas.height / canvas.width, 0.1);
-const cameraForHeader = new THREE.PerspectiveCamera(50, 120/160, 0.1);
-
-cameraForFV.lookAt(new THREE.Vector3(0, 0, 0));
-
-let scrollX = 0.00
-let scrollY = 0.00
-let scrollZ = 0.00
-let prevScrollPosition = 0;
-
-let currentObject: "firstView" | "header" = "firstView"
-
-const renderers = {
-  firstView: new THREE.WebGLRenderer(),
-  header: new THREE.WebGLRenderer()
-}
-
-renderers.firstView.setSize( canvas.height, canvas.width );
-renderers.header.setSize(120, 160);
-
-
-if (canvasWrapperInFV) {
-
-  canvasWrapperInFV.classList.add("active");
-  canvasWrapperInFV.appendChild(renderers.firstView.domElement);
-
-}
-
-if (canvasWrapperInHeader) {
-
-  canvasWrapperInHeader.appendChild(renderers.header.domElement);
-
-}
-
-
-window.addEventListener("resize", () => {
-  canvas = {
-    height: Math.min(window.innerHeight - headerHeight, 1200),
-    width: Math.min(window.innerWidth, 800)
-  }
-
-  renderers.firstView.setPixelRatio(canvas.height / canvas.width);
-
-  // cameraForFV.aspect = canvas.height / canvas.width
-  cameraForFV.updateProjectionMatrix();
-})
-
-window.addEventListener("scroll", () => {
-  
-  if (canvasWrapperInHeader && canvasWrapperInFV) {
-
-    if (canvasWrapperInHeader.getBoundingClientRect().y < window.innerHeight / 3) {
-
-      currentObject = "header"
-      canvasWrapperInHeader.classList.add("active")
-      canvasWrapperInFV.classList.remove("active")
-      
-    } else {
-      
-      currentObject = "firstView"
-      canvasWrapperInHeader.classList.remove("active")
-      canvasWrapperInFV.classList.add("active")
-
-    }
-
-  }
-
-  const globalHeader = document.querySelector("header#global_header")
-  if (globalHeader) {
-    if (window.scrollY + headerHeight > window.innerHeight) {
-
-      document.querySelector("header#global_header")?.classList.add("fix")
-
-    } else {
-
-      document.querySelector("header#global_header")?.classList.remove("fix")
-
-    }
+    const jsonRes = await window.fetch("../assets/jsons/artists.json");
+    const maybeArtistsObj: unknown[] = await jsonRes.json();
     
+    const innerHtml = maybeArtistsObj.map<string>(artist => {
+      if (!isValidArtistProfile(artist)) return "";
+      return `<li>
+        <div class="profile_img">${
+          artist.profileImg
+            ?`<img src="./assets/images/artists_portrait/${artist.profileImg}" >`
+            :""
+        }</div>
+        <div>
+          <h4>${artist.artistName}</h4>
+          <p>${
+            artist.bio.replace(/\n/g, "<br />")
+          }</p>
+          ${artist.links ? `<ul>
+            ${artist.links.map(link =>
+          `<li>
+            <p>
+              <span>[ ${link.name} ] <a href="${link.link}" target="_blank" rel="noopener noreferrer">${link.label}</a></span>
+            </p>
+          </li>`
+        ).join("")}
+          </ul>`: ""}
+        </div>
+      </li>`;
+    }).join("");
+
+    const artistList = document.querySelector("section#artists > ul") as HTMLUListElement;
+    if (artistList) artistList.innerHTML = innerHtml;
+
+  }
+)();
+
+export const addBackground = (): void => {
+
+  const { matches: isDark } = matchMedia("(prefers-color-scheme: dark)")
+
+  const line = document.querySelector("#background_line") as HTMLDivElement;
+  const rectangle = document.querySelector("#background_rectangle") as HTMLDivElement;
+
+  const wrap = document.querySelector("div.row") as HTMLDivElement;
+  const statementBox = document.querySelector("section.box#statement") as HTMLElement;
+  const informationBox = document.querySelector("section.box#information") as HTMLElement;
+  const snsBox = document.querySelector("section.box#sns") as HTMLElement;
+  const events = document.querySelector("section#events") as HTMLUListElement;
+
+  if (
+    !line ||
+    !rectangle ||
+    !statementBox ||
+    !informationBox ||
+    !snsBox ||
+    !events
+  ) return;
+  
+  const wrapRectangle = wrap.getBoundingClientRect();
+  const statementBoxRectangle = statementBox.getBoundingClientRect();
+  const informationBoxRectangle = informationBox.getBoundingClientRect();
+  const snsBoxRectangle = snsBox.getBoundingClientRect();
+  const eventsRectangle = events.getBoundingClientRect();
+  
+  line.style.top = `${statementBoxRectangle.height}px`;
+  line.style.left = `${statementBoxRectangle.width / 2}px`;
+
+  const lineRectangle = line.getBoundingClientRect();
+  const marginBetweenWithStatementBoxAndWrap = wrapRectangle.top - statementBoxRectangle.bottom;
+
+  const rectangleTopPos = lineRectangle.height - marginBetweenWithStatementBoxAndWrap;
+  const informationBoxCenterPosFromLeft = informationBoxRectangle.x + informationBoxRectangle.width / 2;
+  const snsBoxCenterPosFromLeft = snsBoxRectangle.x + snsBoxRectangle.width / 2;
+  const wrapRectanglePosFromLeft = wrapRectangle.left;
+
+  rectangle.style.top = `${rectangleTopPos}px`;
+  rectangle.style.left = `${informationBoxCenterPosFromLeft - wrapRectanglePosFromLeft}px`;
+  rectangle.style.width = `${snsBoxCenterPosFromLeft - informationBoxCenterPosFromLeft}px`;
+  
+  const rectangleRectangle = rectangle.getBoundingClientRect();
+  rectangle.style.height = `${eventsRectangle.bottom - rectangleRectangle.top - eventsRectangle.height / 2 +9}px`;
+
+  line.style.backgroundColor = isDark ? "#BDE729" : "#5F6368";
+  rectangle.style.borderColor = isDark ? "#BDE729" : "#5F6368";
+  
+};
+
+let eventLiElementsWidth: null | number = null
+let eventLiElementsPaddingLeft: null | number = null
+
+const getEventListInnerElementsTotalWidth = (eventsList: HTMLUListElement): number => {
+
+  const firstLi = eventsList.querySelector("li:first-child")
+  const lastLi = eventsList.querySelector("li:last-child")
+
+  if (!firstLi || !lastLi) return 0
+  
+  return lastLi.getBoundingClientRect().right - firstLi.getBoundingClientRect().left
+
+}
+
+const getLiPaddingLeft = (eventsList: HTMLUListElement): number => {
+
+  const firstLi = eventsList.querySelector("li:first-child")
+
+  if (!firstLi) return 0
+  
+  return firstLi.getBoundingClientRect().left - eventsList.getBoundingClientRect().left
+
+}
+
+export const layoutEventsList = (): void => {
+
+  const eventsList = document.querySelector("#events_list") as HTMLUListElement;
+  const eventsSeciont = document.querySelector("section#events") as HTMLElement;
+  
+  if (
+    !eventsList ||
+    !eventsSeciont
+  ) return;
+
+  eventsSeciont.style.left = `0px`;
+  eventsList.style.left = `0px`;
+
+  eventLiElementsWidth = eventLiElementsWidth || getEventListInnerElementsTotalWidth(eventsList);
+  
+  eventLiElementsPaddingLeft = eventLiElementsPaddingLeft || getLiPaddingLeft(eventsList)
+
+  if (window.innerWidth > eventLiElementsWidth + eventLiElementsPaddingLeft) {
+    
+    eventsSeciont.classList.remove("is_overflow");
+    eventsSeciont.classList.add("is_full_viewed");
+    eventsSeciont.style.left = `${(eventsSeciont.getBoundingClientRect().left * -1) + (window.innerWidth - eventsList.getBoundingClientRect().width) / 2}px`;
+    
+  } else {
+
+    eventsSeciont.classList.remove("is_full_viewed");
+    eventsSeciont.classList.add("is_overflow");
+    eventsSeciont.style.left = `${eventsSeciont.getBoundingClientRect().left * -1}px`;
+    eventsList.style.left = `${eventsList.getBoundingClientRect().left * -1}px`;
+
   }
 
-})
-
-window.addEventListener("scroll", () => {
-  if (prevScrollPosition < window.scrollY) {
-    scrollX += 0.07 * rotateDirection.x * -1
-    scrollY += 0.007 * rotateDirection.y * -1
-	} else {
-    scrollX -= 0.05 * rotateDirection.x * -1
-    scrollZ -= 0.009 * rotateDirection.z * -1
-	}
-  prevScrollPosition = window.scrollY;
-  
-});
-
-const loader = new GLTFLoader();
-
-const glbPaths = [
-  './assets/gltf/pcNetwork.glb',
-  './assets/gltf/humans.glb',
-  './assets/gltf/trash.glb',
-  './assets/gltf/gear_and_window.glb',
-  './assets/gltf/fileSharing.glb',
-  './assets/gltf/human_and_file.glb',
-]
-const glb = await loader.loadAsync(glbPaths[
-  Math.floor(Math.random() * glbPaths.length) % glbPaths.length
-]);
-
-const model = glb.scene;
-scene.add(model);
-
-
-const directionalLight = new THREE.DirectionalLight(0xffffff, 2.5)
-directionalLight.position.set(-5, 5, 3)
-scene.add(directionalLight)
-
-renderers.firstView.setClearColor(0x000000, 0);
-renderers.header.setClearColor(0x000000, 0);
-
-cameraForFV.position.z = 5;
-cameraForHeader.position.z = 5;
-
-function animate() {
-  requestAnimationFrame(animate);
-  
-  scrollX -= 0.0004 * rotateDirection.x;
-  model.rotation.x = scrollX * rotateDirection.x
-  scrollY -= 0.001  * rotateDirection.y;
-  model.rotation.y = scrollY * rotateDirection.y
-  scrollZ -= 0.0019  * rotateDirection.z;
-  model.rotation.z = scrollZ * rotateDirection.z
-
-  renderers.firstView.render(scene, cameraForFV);
-  renderers.header.render(scene, cameraForHeader);
-}
-animate();
-
-export default null
+};
