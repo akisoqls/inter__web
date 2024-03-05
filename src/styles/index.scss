@@ -557,6 +557,9 @@ main{
       width: 200px;
       height: 302px;
       z-index: 11;
+      img{
+        filter: drop-shadow(5px 5px 4px #ea3382aa);
+      }
     }
     ul#events_list{
       z-index: 10;
@@ -572,6 +575,10 @@ main{
         flex-shrink: 0;
         section.box{
           width: 300px;
+          header{
+            background-color: #ea3382;
+            border-color: #ea3382;
+          }
           section{
             min-height: 300px;
             position: relative;
