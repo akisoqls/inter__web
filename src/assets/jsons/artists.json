@@ -143,8 +143,8 @@
     "links":[
       {
         "name": "Instagram",
-        "link":"@emergency.exit.sign",
-        "label": "https://www.instagram.com/emergency.exit.sign"
+        "link": "https://www.instagram.com/emergency.exit.sign",
+        "label":"@emergency.exit.sign"
       }
     ],
     "bio":"被VR体験/非VR体験",
