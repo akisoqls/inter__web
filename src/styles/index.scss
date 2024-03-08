@@ -573,6 +573,58 @@ main{
       gap: 36px;
       li{
         flex-shrink: 0;
+        &:first-child{
+          position: sticky;
+          left: 0;
+        }
+        & > section.dates{
+          border: 1px solid #0000;
+          background-color: #0000;
+          width: 500px;
+          position: relative;
+          img{
+            position: absolute;
+            display: block;
+            &.live_title{
+              right: auto;
+              top: 90px;
+              left: 0;
+              width: 332px;
+            }
+            &.live_detes{
+              text-align: right;
+              right: 0;
+              top: 180px;
+              left: auto;
+              width: 263.2px;
+            }
+          }
+        }
+        @media screen and (max-width: 678px) {
+          & > section.dates{
+            border: 1px solid #0000;
+            background-color: #0000;
+            width: 240px;
+            position: relative;
+            img{
+              position: absolute;
+              display: block;
+              &.live_title{
+                right: auto;
+                top: 90px;
+                left: 0;
+                width: 100%;
+              }
+              &.live_detes{
+                text-align: right;
+                right: 0;
+                top: 180px;
+                left: auto;
+                width: 100%;
+              }
+            }
+          }
+        }
         section.box{
           width: 300px;
           header{
