@@ -557,6 +557,9 @@ main{
       width: 200px;
       height: 302px;
       z-index: 11;
+      img{
+        filter: drop-shadow(5px 5px 4px #ea3382aa);
+      }
     }
     ul#events_list{
       z-index: 10;
@@ -570,21 +573,71 @@ main{
       gap: 36px;
       li{
         flex-shrink: 0;
+        &:first-child{
+          position: sticky;
+          left: 0;
+        }
+        & > section.dates{
+          border: 1px solid #0000;
+          background-color: #0000;
+          width: 500px;
+          position: relative;
+          img{
+            position: absolute;
+            display: block;
+            &.live_title{
+              right: auto;
+              top: 90px;
+              left: 0;
+              width: 332px;
+            }
+            &.live_detes{
+              text-align: right;
+              right: 0;
+              top: 180px;
+              left: auto;
+              width: 263.2px;
+            }
+          }
+        }
+        @media screen and (max-width: 678px) {
+          & > section.dates{
+            border: 1px solid #0000;
+            background-color: #0000;
+            width: 240px;
+            position: relative;
+            img{
+              position: absolute;
+              display: block;
+              &.live_title{
+                right: auto;
+                top: 90px;
+                left: 0;
+                width: 100%;
+              }
+              &.live_detes{
+                text-align: right;
+                right: 0;
+                top: 180px;
+                left: auto;
+                width: 100%;
+              }
+            }
+          }
+        }
         section.box{
           width: 300px;
+          header{
+            background-color: #ea3382;
+            border-color: #ea3382;
+          }
           section{
             min-height: 300px;
             position: relative;
-            p.comingsoon{
-              position: absolute;
-              top: 0;
-              right: 0;
-              bottom: 22px;
-              left: 0;
-              height: 24px;
-              margin: auto;
-              text-align: center;
-              font-style: italic;
+            p{
+              a:hover{
+                color: #ea3382;
+              }
             }
           }
         }
