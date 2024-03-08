@@ -634,16 +634,10 @@ main{
           section{
             min-height: 300px;
             position: relative;
-            p.comingsoon{
-              position: absolute;
-              top: 0;
-              right: 0;
-              bottom: 22px;
-              left: 0;
-              height: 24px;
-              margin: auto;
-              text-align: center;
-              font-style: italic;
+            p{
+              a:hover{
+                color: #ea3382;
+              }
             }
           }
         }
